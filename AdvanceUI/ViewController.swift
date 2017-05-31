@@ -4,7 +4,7 @@
 //
 //  Created by jose ramirez on 5/31/17.
 //  Copyright © 2017 Jose Ramirez. All rights reserved.
-//
+//  Lynda ios app development 3: Intermediate UI Design
 
 import UIKit
 /* UIPickerViewDataSource: Handels how many rows and columns are inside of the picker view,the two methods needed to support for datasource is number of rows and components AND number of components in picker view.
@@ -20,8 +20,9 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
     let items:[[String]] = [
              ["A1","A2","A3"],
              ["B1","B2","B3"],
-             ["C1"]
+             ["C1","C2"]
         ]
+    @IBOutlet weak var label: UILabel! //label added
     
     
     override func viewDidLoad() {
@@ -55,6 +56,14 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
     //2.) below is 2D Array return
         return items[component][row]
         
+    }
+    
+    //This delegate method: is going to handle the picker value change event for the label
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+     
+    /*2.) this sets the label with the selected row of any component is goin to show in the label 
+          :to find out more refer to documentation for picker view*/
+        label.text = items[component][row]
     }
     
     override func didReceiveMemoryWarning() {
